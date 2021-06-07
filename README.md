@@ -171,7 +171,8 @@
 #### 비기능 요구사항 coverage
 ![3rdReview](https://user-images.githubusercontent.com/81946287/118766471-6cded180-b8b7-11eb-9c00-dcaec093281c.png)
 
-
+#### 개인과제 Coverage Check
+![image](https://user-images.githubusercontent.com/50816895/121023956-ba779b80-c7de-11eb-91ab-351e7cfe492e.png)
 
 ## 헥사고날 아키텍처 다이어그램 도출
 ![hexagonal1](https://user-images.githubusercontent.com/81946287/118779966-88050d80-b8c6-11eb-88dc-74be433e6f17.png)
