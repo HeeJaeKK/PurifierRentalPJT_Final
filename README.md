@@ -175,8 +175,7 @@
 ![image](https://user-images.githubusercontent.com/50816895/121023956-ba779b80-c7de-11eb-91ab-351e7cfe492e.png)
 
 ## 헥사고날 아키텍처 다이어그램 도출
-![hexagonal1](https://user-images.githubusercontent.com/81946287/118779966-88050d80-b8c6-11eb-88dc-74be433e6f17.png)
-
+![image](https://user-images.githubusercontent.com/50816895/121024837-9072a900-c7df-11eb-96af-8cb4ce0c1eca.png)
 
 ## 신규 서비스 추가 시 기존 서비스에 영향이 없도록 열린 아키택처 설계
 
