@@ -199,6 +199,9 @@
 
 	cd Installation
 	mvn spring-boot:run
+	
+	cd Payment
+	mvn spring-boot:run
 
 
 - EKS : CI/CD 통해 빌드/배포 ("운영 > CI-CD 설정" 부분 참조)
