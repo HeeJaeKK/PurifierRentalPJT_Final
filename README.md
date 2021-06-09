@@ -37,6 +37,10 @@
 1. 가입신청이 취소되면 설치 취소된다.(설치취소 처리는 Req/Res 테스트를 위해 임의로 동기처리)
 1. 고객은 설치진행상태를 수시로 확인할 수 있다.
 
+-추가-
+1. 고객은 정수기 비용을 납부한다.
+2. 받아야할 금액에서 이를 제하고 다시 납부를 완료한다.
+
 비기능적 요구사항
 1. 트랜잭션
     1. 가입취소 신청은 설치취소가 동시 이루어 지도록 한다
@@ -154,6 +158,8 @@
     - 가입신청과 동시에 자동 배정되는 요구사항에 따라 Manager 액터가 불필요하여 제거
     - 고객이 실시간 상태 확인을 위한 View 모델 배치
 
+### 개인과제 3차 모형
+![개인과제](https://user-images.githubusercontent.com/50816895/121023703-7edcd180-c7de-11eb-8f36-758a9aa80802.JPG)
 
 ### 2차 완성본에 대한 기능적/비기능적 요구사항을 커버하는지 검증
 #### 시나리오 Coverage Check (1)
@@ -165,11 +171,11 @@
 #### 비기능 요구사항 coverage
 ![3rdReview](https://user-images.githubusercontent.com/81946287/118766471-6cded180-b8b7-11eb-9c00-dcaec093281c.png)
 
-
+#### 개인과제 Coverage Check
+![image](https://user-images.githubusercontent.com/50816895/121023956-ba779b80-c7de-11eb-91ab-351e7cfe492e.png)
 
 ## 헥사고날 아키텍처 다이어그램 도출
-![hexagonal1](https://user-images.githubusercontent.com/81946287/118779966-88050d80-b8c6-11eb-88dc-74be433e6f17.png)
-
+![image](https://user-images.githubusercontent.com/50816895/121024837-9072a900-c7df-11eb-96af-8cb4ce0c1eca.png)
 
 ## 신규 서비스 추가 시 기존 서비스에 영향이 없도록 열린 아키택처 설계
 
@@ -192,6 +198,9 @@
 	mvn spring-boot:run
 
 	cd Installation
+	mvn spring-boot:run
+	
+	cd Payment
 	mvn spring-boot:run
 
 
