@@ -563,7 +563,7 @@ kind: Deployment
     spec:
       containers:
         - name: order
-          image: 740569282574.dkr.ecr.ap-southeast-2.amazonaws.com/puri-order:v3
+          image: 879772956301.dkr.ecr.ap-northeast-2.amazonaws.com/user04-puri-order:v3
           args:
           - /bin/sh
           - -c
