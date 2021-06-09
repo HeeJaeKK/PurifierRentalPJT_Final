@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: assignment
-          image: 740569282574.dkr.ecr.ap-southeast-2.amazonaws.com/puri-assignment:v3
+          image: 879772956301.dkr.ecr.ap-northeast-2.amazonaws.com/user04-puri-assignment:v2
           ports:
             - containerPort: 8080
           readinessProbe:

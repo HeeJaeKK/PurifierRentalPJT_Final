@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Payment
+  name: payment
   labels:
-    app: Payment
+    app: payment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: Payment
+      app: payment
   template:
     metadata:
       labels:
-        app: Payment
+        app: payment
     spec:
       containers:
-        - name: Payment
-          image: username/Payment:latest
+        - name: payment
+          image: 879772956301.dkr.ecr.ap-northeast-2.amazonaws.com/user04-puri-payment:v2
           ports:
             - containerPort: 8080
           readinessProbe:
