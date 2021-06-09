@@ -44,19 +44,19 @@ spring:
     gateway:
       routes:
         - id: order
-          uri: http://Order:8080
+          uri: http://order:8080
           predicates:
-            - Path=/orders/** /orderStatuses/**
+            - Path=/order/**,/orders/**,/orderStatuses/**
         - id: assignment
-          uri: http://Assignment:8080
+          uri: http://assignment:8080
           predicates:
             - Path=/assignments/** 
         - id: installation
-          uri: http://Installation:8080
+          uri: http://installation:8080
           predicates:
             - Path=/installations/** 
         - id: payment
-          uri: http://Payment:8080
+          uri: http://payment:8080
           predicates:
             - Path=/payments/** 
       globalcors:
