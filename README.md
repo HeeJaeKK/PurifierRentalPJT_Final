@@ -578,8 +578,8 @@ kind: Deployment
             periodSeconds: 5
             failureThreshold: 5
 ```
-
-
+- CrashLoopBackOff 상태 확인
+![image](https://user-images.githubusercontent.com/50816895/121301601-65996980-c933-11eb-852b-e395f31b524e.png)
 
 ### 오토스케일 아웃
 
