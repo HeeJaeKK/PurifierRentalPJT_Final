@@ -511,69 +511,17 @@ $ kubectl apply -f service.yaml
 
 - istio 설치
 
-
-![image](https://user-images.githubusercontent.com/76420081/119083009-2665b000-ba3a-11eb-8a43-aeb9b7e7db98.png)
-
-![image](https://user-images.githubusercontent.com/76420081/119083153-6331a700-ba3a-11eb-9543-475bb812c176.png)
-
-![image](https://user-images.githubusercontent.com/76420081/119083538-1b5f4f80-ba3b-11eb-952d-89e7d7adec23.png)
-http://acdf28d4a2a744330ad8f7db4e05aeac-1896393867.ap-southeast-2.elb.amazonaws.com:20001/
-
-![image](https://user-images.githubusercontent.com/76420081/119086647-c292b580-ba40-11eb-9450-7b47e4128157.png)
-
-
- root@labs--2007877942:/home/project# curl -L https://istio.io/downloadIstio | ISTIO_VERSION=1.7.1 TARGET_ARCH=x86_64 sh -
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100   102  100   102    0     0    153      0 --:--:-- --:--:-- --:--:--   152
-100  4573  100  4573    0     0   4880      0 --:--:-- --:--:-- --:--:--  4880
-
-Downloading istio-1.7.1 from https://github.com/istio/istio/releases/download/1.7.1/istio-1.7.1-linux-amd64.tar.gz ...
-
-Istio 1.7.1 Download Complete!
-
-Istio has been successfully downloaded into the istio-1.7.1 folder on your system.
-
-Next Steps:
-See https://istio.io/latest/docs/setup/install/ to add Istio to your Kubernetes cluster.
-
-To configure the istioctl client tool for your workstation,
-add the /home/project/istio-1.7.1/bin directory to your environment path variable with:
-         export PATH="$PATH:/home/project/istio-1.7.1/bin"
-
-Begin the Istio pre-installation check by running:
-         istioctl x precheck 
-
-Need more information? Visit https://istio.io/latest/docs/setup/install/ 
-root@labs--2007877942:/home/project# ㅣㅣ
-bash: ㅣㅣ: command not found
-root@labs--2007877942:/home/project# ll
-total 24
-drwxr-xr-x 4 root root  6144 May 21 04:37 ./
-drwxrwxr-x 1 root root    19 May  3 04:35 ../
--rwx------ 1 root root 11248 May 21 03:06 get_helm.sh*
-drwxr-x--- 6 root root  6144 Sep  9  2020 istio-1.7.1/
-drwxr-xr-x 4 root root  6144 May 21 02:37 team/
-root@labs--2007877942:/home/project# cd istio-1.7.1/
-root@labs--2007877942:/home/project/istio-1.7.1# export PATH=$PWD/bin:$PATH
-root@labs--2007877942:/home/project/istio-1.7.1# istioctl install --set profile=demo --set hub=gcr.io/istio-release
-
-✔ Istio core installed                                                                            
-✔ Istiod installed                                                                                
-✔ Ingress gateways installed                                                                                                                                                                                         
-✔ Egress gateways installed                                                                                                                                                                                          
-✔ Installation complete                                                                                                                 
-
-
+![istio](https://user-images.githubusercontent.com/50816895/121296094-09cae280-c92b-11eb-867e-9a43e4c37448.JPG)
+                                                                                                              
 - istio 에서 서킷브레이커 설정(DestinationRule)
 ```
 cat <<EOF | kubectl apply -f -
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
-  name: order
+  name: installation
 spec:
-  host: order
+  host: installation
   trafficPolicy:
     connectionPool:
       tcp:
@@ -595,8 +543,7 @@ EOF
 - 동시사용자 100명
 - 60초 동안 실시
 - 결과 화면
-![image](https://user-images.githubusercontent.com/76420081/119089217-c32d4b00-ba44-11eb-8038-9c86b9c92897.png)
-![kiali](https://user-images.githubusercontent.com/81946287/119092566-8b74d200-ba49-11eb-8ce1-e38ebfcacd13.png)
+![image](https://user-images.githubusercontent.com/50816895/121295944-d38d6300-c92a-11eb-8531-ed149b1d7147.png)
 
 ### Liveness
 pod의 container가 정상적으로 기동되는지 확인하여, 비정상 상태인 경우 pod를 재기동하도록 한다.   
