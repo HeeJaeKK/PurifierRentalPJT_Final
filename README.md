@@ -616,9 +616,18 @@ siege -c50 -t180S  -v 'http://a5f9e103b958a4b9d87150880b498020-128284363.ap-nort
 ```
 
 - 오토스케일 발생하지 않음(siege 실행 결과 오류 없이 수행됨 : Availability 100%)
-- 서비스에 복잡한 비즈니스 로직이 포함된 것이 아니어서, CPU 부하를 주지 못한 것으로 추정된다.
+- autoscale 대상이 unknown이며, 확인결과 메트릭스 서버 설치필요한 것으로 보임
 
 ![image](https://user-images.githubusercontent.com/76420081/119087445-1ce04600-ba42-11eb-92c8-2f0e2d772562.png)
+
+- 메트릭스 서버 설치
+```
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+kubectl get deployment metrics-server -n kube-system
+```
+![image](https://user-images.githubusercontent.com/50816895/121300111-5b766b80-c931-11eb-8b4a-19a56244901c.png)
+![image](https://user-images.githubusercontent.com/50816895/121300180-7648e000-c931-11eb-8d7b-ec23c13621ac.png)
+
 
 
 ## 무정지 재배포
