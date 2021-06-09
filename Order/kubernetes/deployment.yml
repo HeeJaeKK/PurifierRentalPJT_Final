@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: order
-          image: username/order:v2
+          image: 879772956301.dkr.ecr.ap-northeast-2.amazonaws.com/user04-puri-order:v3
           ports:
             - containerPort: 8080
           readinessProbe:
