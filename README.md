@@ -587,8 +587,22 @@ kind: Deployment
 ```
 kubectl autoscale deploy order --min=1 --max=10 --cpu-percent=1
 ```
-
+- deployment.yaml
+```apiVersion: apps/v1
+kind: Deployment
+...
+    spec:
+      containers:
+        - name: order
+          resources:
+            limits: 
+              cpu: 500m
+            requests:
+              cpu: 200m
+          image: 879772956301.dkr.ecr.ap-northeast-2.amazonaws.com/user04-puri-order:v4
+```
 - 오토스케일이 어떻게 되고 있는지 모니터링을 걸어준다.
+
 ```
 kubectl get deploy order -w
 
@@ -597,8 +611,7 @@ kubectl get hpa order -w
 
 - 사용자 50명으로 워크로드를 3분 동안 걸어준다.
 ```
-siege -c50 -t180S  -v 'http://a39e59e8f1e324d23b5546d96364dc45-974312121.ap-southeast-2.elb.amazonaws.com:8080/order/joinOrder POST productId=4&productName=PURI4&installationAddress=Dongtan&customerId=504'
-
+siege -c50 -t180S  -v 'http://a5f9e103b958a4b9d87150880b498020-128284363.ap-northeast-2.elb.amazonaws.com:8080/order/joinOrder POST productId=4&productName=PURI4&installationAddress=Dongtan&customerId=504'
 
 ```
 
