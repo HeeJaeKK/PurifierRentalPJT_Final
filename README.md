@@ -412,7 +412,7 @@ public class PolicyHandler{
 ## CQRS
 
 가입신청 상태 조회를 위한 서비스를 CQRS 패턴으로 구현하였다.
-- Order, Assignment, Installation 개별 aggregate 통합 조회로 인한 성능 저하를 막을 수 있다.
+- Order, Assignment, Installation, Payment 개별 aggregate 통합 조회로 인한 성능 저하를 막을 수 있다.
 - 모든 정보는 비동기 방식으로 발행된 이벤트를 수신하여 처리된다.
 - 설계 : MSAEz 설계의 view 매핑 설정 참조
 
@@ -445,22 +445,26 @@ API Gateway를 통하여, 마이크로 서비스들의 진입점을 통일한다
 # application.yml 파일에 라우팅 경로 설정
 
 spring:
-  profiles: default
+  profiles: docker
   cloud:
     gateway:
       routes:
-        - id: Order
-          uri: http://localhost:8081
+        - id: order
+          uri: http://order:8080
           predicates:
-            - Path=/orders/**,/order/**,/orderStatuses/**
-        - id: Assignment
-          uri: http://localhost:8082
+            - Path=/order/**,/orders/**,/orderStatuses/**
+        - id: assignment
+          uri: http://assignment:8080
           predicates:
-            - Path=/assignments/**,/assignment/** 
-        - id: Installation
-          uri: http://localhost:8083
+            - Path=/assignments/** 
+        - id: installation
+          uri: http://installation:8080
           predicates:
-            - Path=/installations/**,/installation/** 
+            - Path=/installations/** 
+        - id: payment
+          uri: http://payment:8080
+          predicates:
+            - Path=/payments/** 
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -487,7 +491,7 @@ server:
 ### 빌드/배포
 각 프로젝트 jar를 Dockerfile을 통해 Docker Image 만들어 ECR저장소에 올린다.   
 EKS 클러스터에 접속한 뒤, 각 서비스의 deployment.yaml, service.yaml을 kuectl명령어로 서비스를 배포한다.   
-  - 코드 형상관리 : https://github.com/llyyjj99/PurifierRentalPJT 하위 repository에 각각 구성   
+  - 코드 형상관리 : https://github.com/HeeJaeKK/PurifierRentalPJT_Final 하위 repository에 각각 구성   
   - 운영 플랫폼 : AWS의 EKS(Elastic Kubernetes Service)   
   - Docker Image 저장소 : AWS의 ECR(Elastic Container Registry)
 ##### 배포 명령어
@@ -497,7 +501,7 @@ $ kubectl apply -f service.yaml
 ```
 
 ##### 배포 결과
-![image](https://user-images.githubusercontent.com/76420081/119082405-fa95fa80-ba38-11eb-8ad5-c7cd5b4f736a.png)
+![운영 Deploy](https://user-images.githubusercontent.com/50816895/121293664-f453b980-c926-11eb-90d6-b0feca07168a.JPG)
 
 ## 동기식 호출 / 서킷 브레이킹 / 장애격리
 
