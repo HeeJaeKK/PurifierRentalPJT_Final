@@ -8,19 +8,19 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: Order
+        - id: order
           uri: http://localhost:8081
           predicates:
-            - Path=/orders/** /orderStatuses/**
-        - id: Assignment
+            - Path=/order/**,/orders/**,/orderStatuses/**
+        - id: assignment
           uri: http://localhost:8082
           predicates:
             - Path=/assignments/** 
-        - id: Installation
+        - id: installation
           uri: http://localhost:8083
           predicates:
             - Path=/installations/** 
-        - id: Payment
+        - id: payment
           uri: http://localhost:8084
           predicates:
             - Path=/payments/** 
@@ -43,19 +43,19 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: Order
+        - id: order
           uri: http://Order:8080
           predicates:
             - Path=/orders/** /orderStatuses/**
-        - id: Assignment
+        - id: assignment
           uri: http://Assignment:8080
           predicates:
             - Path=/assignments/** 
-        - id: Installation
+        - id: installation
           uri: http://Installation:8080
           predicates:
             - Path=/installations/** 
-        - id: Payment
+        - id: payment
           uri: http://Payment:8080
           predicates:
             - Path=/payments/** 
